@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<form action="" method="post">
+<p align="center"><h3 align="center">Rails classification report and feature importances </h3></p>
+<table cellpadding="15" cellspacing="40" align="center">
+    <thead>
+        <tr>
+            <th>Accuracy</th>
+            <th>Precision</th>
+            <th>Recall</th>
+            <th>F1-measure</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td> <b>{{classification_report.accuracy }}</b></td>
+                <td>  <b>{{ classification_report.pricision }}</b></td>
+                <td>  <b>{{ classification_report.recall }}</b></td>
+                <td>  <b>{{ classification_report.f1_score }}</b></td>
+            </tr>
+            <tr>
+               {{ importance_feature }}
+
+            </tr>
+    </tbody>
+</table>
+
+</form>
+<h3 align="center">Feature importance for predicting reopened pull requests</h3>
+<center><img src="{% static 'media/rails_feature.png' %}" width="600" height="350" alt="Feautre importances"></center>
+{% endblock content %}

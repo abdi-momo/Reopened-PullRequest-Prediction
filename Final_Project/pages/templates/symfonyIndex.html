@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br/>
+<form action="" method="post">
+    <table  id="table" class="table table-sm table-bordered" style="width: 50%" align="center">
+        <thead class="thead-dark">
+            <tr class="table-header">
+                <th style="width: 30%">Project</th>
+                <th style="width: 20%">PR ID </th>
+                <th>Comments </th>
+                <th> LC added </th>
+                <th> LC deleted </th>
+                <th> Commits </th>
+                <th> Changed fies </th>
+                <th> Evaluation time </th>
+                <th> First status </th>
+                <th> Reputation </th>
+                <th data-field="label" data-filter-control="select" data-sortable="true"> Reopened</th>
+                <th style="width: 2%"> Predict </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for field in pullrequests %}
+                <tr >
+{#                    <td>{{ field.pk  }}</td>#}
+                    <td style="width: 12%">{{ field.pr_project  }}</td>
+                    <td style="width: 2%">{{ field.pr_id }} </td>
+                    <td>{{ field.nb_comments }} </td>
+                    <td>{{ field.nb_added_lines_code }}</td>
+                    <td>{{ field.nb_deleted_lines_code }}</td>
+                    <td>{{ field.nb_commits }}</td>
+                    <td>{{ field.nb_changed_fies }}</td>
+                    <td>{{ field.time_evaluation }}</td>
+                    <td>{{ field.Closed_status }}</td>
+                    <td>{{ field.reputation }}</td>
+                    <td>{{ field.Label }}</td>
+{#                    <td><input type="checkbox" id="pk" name="check-tab1" value={{checkbox}} /></td>#}
+
+                    <td style="width: 2%"><a href="/SymfonyPredResult?id={{field.pr_id}}&project={{ field.pr_project }}&class_label={{ field.Label }}">Predict</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <center>
+        <div class="pagination" align="center">
+            <span class="step-links">
+            {% if pullrequests.has_previous %}
+                <a  href="?page=1">&laquo; first</a>
+                <a  href="?page={{ pullrequests.previous_page_number }}">Previous</a>
+            {% endif %}
+            <span class="current">
+                Page {{ pullrequests.number }} of {{ pullrequests.paginator.num_pages }}.
+            </span>
+
+            {% if pullrequests.has_next %}
+                <a href="?page={{ pullrequests.next_page_number }}">Next</a>
+                <a  href="?page={{ pullrequests.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+            </span>
+        </div>
+    </center>
+</form>
+{% endblock content %}
+

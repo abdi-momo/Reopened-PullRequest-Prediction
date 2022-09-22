@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% block content %}
+{% csrf_token %}
+{% autoescape off %}
+<form action="" method="post">
+<br />
+    <p><h3 align="center">Status of reopened pull requests at the first close and final close.</h3></p>
+<div class="table-responsive-sm">
+<table id="table" class="table table-sm table-bordered" style="width: 60%" align="center">
+    <thead>
+        <tr>
+            <th style="width: 5%">Projects</th>
+            <th style="width: 28%">#/%Reop_PR_merged_first_close</th>
+            <th style="width: 19%">#/%Reop_PR_merged_final_close</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td> rails</td>
+            <td> 0 / 0.00%</td>
+            <td> 258 / 55.25%</td>
+        </tr>
+        <tr>
+            <td> cocos2d-x </td>
+            <td> 0 / 0.00% </td>
+            <td> 59 / 52.21% </td>
+
+        </tr>
+
+        <tr>
+            <td> symfony </td>
+            <td> 2 / 0.02% </td>
+            <td> 66 / 30.00% </td>
+
+        </tr>
+        <tr>
+            <td> homebrew-cask </td>
+            <td> 0 / 0.00% </td>
+            <td> 194 / 58.61% </td>
+
+        </tr>
+        <tr>
+            <td> zendframework </td>
+            <td> 0 / 0.00% </td>
+            <td> 93 / 43.66% </td>
+        </tr>
+        <tr>
+            <td> angular.js </td>
+            <td> 0 / 0.00% </td>
+            <td> 5 / 2.30% </td>
+        </tr>
+        <tr>
+            <td> bootstrap </td>
+            <td> 0 / 0.00% </td>
+            <td> 36 / 26.48% </td>
+
+        </tr>
+    </tbody>
+</table>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<br>
+
+<br>
+
+</form>
+     {% endautoescape %}
+{% endblock content %}
+
+<div class="footer">
+{% block footer %}
+{% endblock footer %}
+</div>
+
+

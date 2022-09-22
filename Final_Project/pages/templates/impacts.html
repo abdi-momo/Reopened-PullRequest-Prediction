@@ -1,0 +1,196 @@
+{% extends 'base.html' %}
+{% block content %}
+{% csrf_token %}
+{% autoescape off %}
+<form action="" method="post">
+    <p><h6 align="center">Median number of comments for reopened and non-reopened pull requests.</h6></p>
+<div class="table-responsive-sm">
+<table id="table" class="table table-sm table-bordered" style="width: 45%" align="center">
+    <thead>
+
+        <tr>
+            <th rowspan=2 style="width: 10%">
+                Projects
+            </th>
+            <th colspan=2 >
+                Median number of comments
+            </th>
+        </tr>
+
+        <tr>
+
+            <th style="width: 10%">Non-reopened</th>
+
+            <th style="width: 10%">Reopened</th>
+
+            <th rowspan=2 style="width: 5%">
+               P-value
+            </th>
+        </tr>
+
+    </thead>
+    <tbody>
+    <tr>
+        <td> rails</td>
+        <td>2</td>
+        <td> 6 </td>
+        <td><1.00e-05</td>
+
+    </tr>
+    <tr>
+        <td> cocos2d-x </td>
+        <td> 0 </td>
+        <td>2 </td>
+        <td> <1.00e-05</td>
+
+    </tr>
+
+    <tr>
+        <td> symfony </td>
+        <td> 2 </td>
+        <td> 7 </td>
+        <td> <1.00e-05 </td>
+
+
+    </tr>
+    <tr>
+        <td> homebrew-cask </td>
+        <td> 0 </td>
+        <td> 1 </td>
+        <td> <1.00e-05 </td>
+
+
+    </tr>
+    <tr>
+        <td> zendframework </td>
+        <td> 1 </td>
+        <td> 5 </td>
+        <td> <1.00e-05 </td>
+
+    </tr>
+    <tr>
+        <td> angular.js </td>
+        <td> 3 </td>
+        <td> 5 </td>
+        <td> <1.00e-05 </td>
+
+    </tr>
+    <tr>
+        <td> bootstrap </td>
+        <td> 1 </td>
+        <td> 5 </td>
+        <td> <1.00e-05 </td>
+
+    </tr>
+</tbody>
+</table>
+</div>
+<br/>
+<br/>
+<div class="table-responsive-sm">
+
+    <p><h6 align="center">Median evaluation time for reopened and non-reopened pull requests.</h6></p>
+<table id="table" class="table table-sm table-bordered" style="width: 45%" align="center">
+    <thead>
+
+        <tr>
+            <th rowspan=2 style="width: 10%">
+                Projects
+            </th>
+            <th colspan=2 >
+               Median time (day)
+            </th>
+        </tr>
+
+        <tr>
+
+            <th style="width: 10%">Non-reopened</th>
+
+            <th style="width: 10%">Reopened</th>
+
+            <th rowspan=2 style="width: 5%">
+               P-value
+            </th>
+        </tr>
+
+    </thead>
+    <tbody>
+    <tr>
+        <td> rails</td>
+        <td>0.26</td>
+        <td> 4.43 </td>
+        <td><1.00e-05</td>
+
+    </tr>
+    <tr>
+        <td> cocos2d-x </td>
+        <td> 0.08 </td>
+        <td> 2.20 </td>
+        <td> <1.00e-05</td>
+
+    </tr>
+
+    <tr>
+        <td> symfony </td>
+        <td> 0.83 </td>
+        <td> 10.94 </td>
+        <td> <1.00e-05 </td>
+
+
+    </tr>
+    <tr>
+        <td> homebrew-cask </td>
+        <td> 0.06 </td>
+        <td> 0.17 </td>
+        <td> <1.00e-05 </td>
+
+
+    </tr>
+    <tr>
+        <td> zendframework </td>
+        <td> 2.61 </td>
+        <td> 6.08 </td>
+        <td> <1.00e-05 </td>
+
+    </tr>
+    <tr>
+        <td> angular.js </td>
+        <td> 2.63 </td>
+        <td> 16.83 </td>
+        <td> <1.00e-05 </td>
+
+    </tr>
+    <tr>
+        <td> bootstrap </td>
+        <td> 0.54 </td>
+        <td> 8.39 </td>
+        <td> <1.00e-05 </td>
+
+    </tr>
+</tbody>
+</table>
+</div>
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<br>
+
+<br>
+
+</form>
+     {% endautoescape %}
+{% endblock content %}
+
+<div class="footer">
+{% block footer %}
+{% endblock footer %}
+</div>
+
+

@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+{% load static %}
+{#{% load media %}#}
+{% block title %}
+{% endblock title %}
+{#{{ title }}#}
+{% block content %}
+{% csrf_token %}
+{#{% autoescape off %}#}
+
+<form action="" method="post">
+<b> <h2 align="center"> Prediction result by row </h2> </b>
+
+    <table cellpadding="20" cellspacing="50" align="center" class="table table-sm table-striped" style="width: 52%">
+        <thead class="thead-dark">
+            <tr>
+                <th> Project</th>
+                <th> PR_ID</th>
+                <th> Comments</th>
+                <th> LC added</th>
+                <th> LC deleted</th>
+                <th> Commits</th>
+                <th> Changed file</th>
+                <th> Evaluation time</th>
+                <th> Closed status</th>
+                <th> Reputation</th>
+{#                <td>Reopened</td>#}
+            </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>{{ new_data.project }}</td>
+            <td>{{ new_data.prId }}</td>
+            <td>{{ new_data.comments }}</td>
+            <td>{{ new_data.lc_added }}</td>
+            <td>{{ new_data.lc_deleted }}</td>
+            <td>{{ new_data.commits }}</td>
+            <td>{{ new_data.changed_files }}</td>
+            <td>{{ new_data.evaluation_time }}</td>
+            <td>{{ new_data.firstStatus }}</td>
+            <td>{{ new_data.reputation }}</td>
+{#            <td>{{  }}</td>#}
+
+        </tr>
+        <tr>
+        <tr>
+            <td><h4>Reality:</h4></td>
+
+                <td>{{ new_data.classLabel }}</td>
+        </tr>
+        <tr>
+            <td> <h4 align="center">Predicted: </h4></td>
+            <td>
+                {% if predicted == 1 %}
+                    <img src="{% static 'media/Validate_image.png' %}" height="40" width="40">
+                {% else %}
+                    <img src="{% static 'media/No.png' %}" height="40" width="40">
+                {% endif %}
+            </td>
+
+        </tr>
+    </tbody>
+    </table>
+
+
+{#<h4 align="center"> Reality: {{ classLabel }}</h4>#}
+
+{#<hr />#}
+{#<p align="center"><h2 align="center">Classification report</h2></p>#}
+{#    <table cellpadding="20" cellspacing="50">#}
+{#        <thead>#}
+{#            <tr>#}
+{#                <th>Project</th>#}
+{#                <th>Accuracy</th>#}
+{#                <th>Precision</th>#}
+{#                <th>Recall</th>#}
+{#                <th>F1-measure</th>#}
+{##}
+{#            </tr>#}
+{#            </thead>#}
+{##}
+{#            <tbody>#}
+{#                <tr>#}
+{#                    <th> {{ projects.rails }}</th>#}
+{#                    <td> {{classification_report.accuracy }}</td>#}
+{#                    <td> {{ classification_report.pricision }}</td>#}
+{#                    <td> {{ classification_report.recall }}</td>#}
+{#                    <td> {{ classification_report.f1_score }}</td>#}
+{#                </tr>#}
+{#        </tbody>#}
+{#    </table>#}
+{#        <br/>#}
+{#    <hr />#}
+{##}
+{##}
+{#</form>#}
+{#        <br />#}
+{#    <canvas id="myChart" width="550" height="170"></canvas>#}
+{##}
+{#<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>#}
+{#<p align="center">Feature importance for predicting reopened pull requests</p>#}
+{#<canvas id="myChart" width="400" height="400"></canvas>#}
+{#<script>#}
+{#var ctx = document.getElementById("myChart");#}
+{#var sourceList = {{ importance_feature.importances_feautre|safe }};#}
+{#var features_col = {{ features|safe }}#}
+{#var myChart = new Chart(ctx, {#}
+{#    type: 'bar',#}
+{#    data: {#}
+        {#labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange", "1", "2"],#}
+{#        labels: features_col,#}
+{#       datasets: [{#}
+{#            label: '# of feature importance',#}
+            {#data: [12, 19, 3, 5, 2, 3],#}
+{#            data: sourceList,#}
+{#            backgroundColor: [#}
+{#                'rgba(255, 99, 132, 0.2)',#}
+{#                'rgba(54, 162, 235, 0.2)',#}
+{#                'rgba(255, 206, 86, 0.2)',#}
+{#                'rgba(75, 192, 192, 0.2)',#}
+{#                'rgba(153, 102, 255, 0.2)',#}
+{#                'rgba(255, 159, 64, 0.2)',#}
+{#                'rgba(255, 152, 61, 0.2)',#}
+{#                'rgba(255, 159, 60, 0.2)'#}
+{#            ],#}
+{#            borderColor: [#}
+{#                'rgba(255,99,132,1)',#}
+{#                'rgba(54, 162, 235, 1)',#}
+{#                'rgba(255, 206, 86, 1)',#}
+{#                'rgba(75, 192, 192, 1)',#}
+{#                'rgba(153, 102, 255, 1)',#}
+{#                'rgba(255, 159, 64, 1)',#}
+{#                'rgba(250, 150, 60, 1)',#}
+{#                'rgba(250, 150, 60, 1)'#}
+{#            ],#}
+{#            borderWidth: 1#}
+{#        }]#}
+{#    },#}
+{#    options: {#}
+{#        scales: {#}
+{#            yAxes: [{#}
+{#                ticks: {#}
+{#                    beginAtZero:true#}
+{#                }#}
+{#            }]#}
+{#        }#}
+{#    }#}
+{#{);#}
+{#myChart.resize();#}
+{#</script>#}
+{#    {% endautoescape %}#}
+</form>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>  <br/><br/>  <br/>
+{% endblock content %}

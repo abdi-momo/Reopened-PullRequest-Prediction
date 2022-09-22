@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>CSS Template</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="a nonymous"></script>-->
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0px;
+  padding: 0px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+header {
+  background-color: #666;
+  padding: 5px;
+  text-align: center;
+  font-size: 15px;
+  color: white;
+}
+
+/* Create two columns/boxes that floats next to each other */
+nav {
+  float: left;
+  width: 15%;
+  height: 600px; /* only for demonstration, should be removed */
+  background: #ccc;
+  padding: 25px;
+  border-bottom: 10px solid rgba(100,100,100,0.3);
+  font-size: 18px;
+}
+
+/* Style the list inside the menu */
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  /*border-bottom: 10px solid;*/
+}
+
+
+li a:hover{
+  display: block;
+  background-color: #dddddd;
+  /*color: white;*/
+  color: #ccc;
+  text-decoration: none;
+}
+article {
+  float: left;
+  padding: 25px;
+  width: 85%;
+  background-color: #f1f1f1;
+  height: 600px; /* only for demonstration, should be removed */
+}
+
+/* Clear floats after the columns */
+section:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Style the footer */
+footer {
+  background-color: #151719;
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+
+/* Style The Dropdown Button */
+.dropbtn {
+  background-color: rgb(0,0,256);
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
+/* Responsive layout - makes the two columns/boxes stack on top of each other instead of next to each other, on small screens */
+@media (max-width: 600px) {
+  nav, article {
+    width: 100%;
+    height: auto;
+  }
+}
+</style>
+
+</head>
+<body>
+<header>
+  <h2>Prototype system of the prediction of reopened pull requests</h2>
+
+
+</header>
+
+<section>
+
+  <nav>
+    <div class="dropdown">
+      <button class="dropbtn">Reopened Analysis</button>
+      <div class="dropdown-content">
+        <a href="#">Basic info</a>
+        <a href="#">Status</a>
+        <a href="#">Changed files</a>
+        <a href="#">Merged percent</a>
+        <a href="#"> Reop & non-reop comparison</a>
+        <a href="#"> Reopening reasons</a>
+      </div>
+  </div>
+
+    <hr>
+    <p>Projects</p>
+    <ul>
+      <li><a href="{% url 'rails' %}" class="active">Rails</a></li>
+      <li><a href="{% url 'cocosd' %}" class="active">Cocos2d-x</a></li>
+      <li><a href="#" class="active">Symfony</a></li>
+      <li><a href="#" class="active">Homebrew-cask</a></li>
+      <li><a href="#" class="active">Zendframework</a></li>
+      <li><a href="#" class="active">Angular.js</a></li>
+      <li><a href="#" class="active">Bootstrap</a></li>
+    </ul>
+  </nav>
+
+  <article>
+    <h1>Data inside</h1>
+    <!-- <p>London is the capital city of England. It is the most populous city in the  United Kingdom, with a metropolitan area of over 13 million inhabitants.</p>
+    <p>Standing on the River Thames, London has been a major settlement for two millennia, its history going back to its founding by the Romans, who named it Londinium.</p>
+  </article> -->
+  </article>
+</section>
+
+<footer>
+  <p>Copyright &copy; 2019 M. Abdillah Design</p>
+</footer>
+
+</body>
+</html>

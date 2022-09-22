@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+ <form action="" method="post">
+<hr />
+<p align="center"><h2 align="center">Zendframework classification report and feature importances </h2></p>
+<table cellpadding="20" cellspacing="50" align="center">
+    <thead class="table-dark">
+        <tr>
+            <th>Accuracy</th>
+            <th>Precision</th>
+            <th>Recall</th>
+            <th>F1-measure</th>
+
+        </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td> <b>{{classification_report.accuracy }}</b></td>
+                <td> <b> {{ classification_report.pricision }}</b></td>
+                <td> <b> {{ classification_report.recall }}</b></td>
+                <td> <b> {{ classification_report.f1_score }}</b></td>
+            </tr>
+    </tbody>
+</table>
+   <hr />
+<b><h3 align="center">Feature importance for predicting reopened pull requests</h3></b>
+
+<center><img src="{% static 'media/zendframework_feature.png' %}" width="600" height="350" alt="Feautre importances"></center>
+</form>
+{% endblock content %}

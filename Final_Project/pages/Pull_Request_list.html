@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+    <form action="" method="POST">
+        {% csrf_token %}
+        <h2 align = Center>Add projects to the database </h2>
+        <p> <br></p>
+        <p align = Center><input type="search" class="span3" placeholder="Project name" name="name" id="search" autofocus /> </p>
+        <p align = Center><input type="search" class="span3" placeholder="Project owner" name="owner" id="search" autofocus /> </p>
+        <p align = Center><button type="submit" class="btn
+        btn-primary btn-large pull-center">Add
+        &raquo;</button></p>
+    </form>
+{% endblock content %}

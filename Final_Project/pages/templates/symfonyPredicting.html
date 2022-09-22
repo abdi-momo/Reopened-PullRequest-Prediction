@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+ <form action="" method="post">
+<b align="center"><h3 align="center">Symfony classification report and feature importances </h3></b>
+    <table cellpadding="15" cellspacing="35" align="center" >
+        <thead class="table-primary">
+            <tr>
+                <th>Accuracy</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1-measure</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> <b> {{classification_report.accuracy }} </b></td>
+                    <td> <b> {{ classification_report.pricision}} </b></td>
+                    <td> <b> {{ classification_report.recall }} </b></td>
+                    <td> <b> {{ classification_report.f1_score}} </b></td>
+                </tr>
+        </tbody>
+    </table>
+</form>
+<b><h3 align="center">Feature importance for predicting reopened pull requests</h3></b>
+<center><img src="{% static 'media/symfony_feature.png' %}" width="600" height="350" alt="Feautre importances"></center>
+
+{#<canvas id="myChart" width="550" height="170"></canvas>#}
+{##}
+{#<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>#}
+{#<p align="center">Feature importance for predicting reopened pull requests</p>#}
+{#<canvas id="myChart" width="400" height="400"></canvas>#}
+{#<script>#}
+{#var ctx = document.getElementById("myChart");#}
+{#var sourceList = {{ importance_feature|safe }};#}
+{#var features_col = {{ features|safe }}#}
+{#var xlabels=#}
+{#var myChart = new Chart(ctx, {#}
+{#    type: 'bar',#}
+{#    data: {#}
+        {#labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange", "1", "2"],#}
+{#        labels: features_col,#}
+{#       datasets: [{#}
+{#            label: '# of feature importance',#}
+            {#data: [12, 19, 3, 5, 2, 3],#}
+{#            data: sourceList,#}
+{#            backgroundColor: [#}
+{#                'rgba(255, 99, 132, 0.2)',#}
+{#                'rgba(54, 162, 235, 0.2)',#}
+{#                'rgba(255, 206, 86, 0.2)',#}
+{#                'rgba(75, 192, 192, 0.2)',#}
+{#                'rgba(153, 102, 255, 0.2)',#}
+{#                'rgba(255, 159, 64, 0.2)',#}
+{#                'rgba(255, 152, 61, 0.2)',#}
+{#                'rgba(255, 159, 60, 0.2)'#}
+{#            ],#}
+{#            borderColor: [#}
+{#                'rgba(255,99,132,1)',#}
+{#                'rgba(54, 162, 235, 1)',#}
+{#                'rgba(255, 206, 86, 1)',#}
+{#                'rgba(75, 192, 192, 1)',#}
+{#                'rgba(153, 102, 255, 1)',#}
+{#                'rgba(255, 159, 64, 1)',#}
+{#                'rgba(250, 150, 60, 1)',#}
+{#                'rgba(250, 150, 60, 1)'#}
+{#            ],#}
+{#            borderWidth: 1#}
+{#        }]#}
+{#    },#}
+{#    options: {#}
+{#        scales: {#}
+{#            yAxes: [{#}
+{#                ticks: {#}
+{#                    beginAtZero:true#}
+{#                }#}
+{#            }]#}
+{#        }#}
+{#    }#}
+{#});#}
+{#myChart.resize();#}
+{#</script>#}
+{% endblock content %}

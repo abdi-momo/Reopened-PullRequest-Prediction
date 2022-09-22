@@ -1,0 +1,313 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br/>
+<form action="" method="post">
+    <div class="table-responsive">
+        <table  id="table" class="table table-sm table-bordered" style="width: 50%" align="center">
+            <thead class="table-secondary">
+                <tr class="table-header">
+                    <th style="width: 30%">Project</th>
+                    <th style="width: 20%">PR ID </th>
+                    <th>Comments </th>
+                    <th> LC added </th>
+                    <th> LC deleted </th>
+                    <th> Commits </th>
+                    <th> Changed fies </th>
+                    <th> Evaluation time </th>
+                    <th> First status </th>
+                    <th> Reputation </th>
+                    <th data-field="label" data-filter-control="select" data-sortable="true"> Reopened</th>
+                    <th style="width: 2%"> Predict </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for field in pullrequests %}
+                    <tr >
+                        <td style="width: 12%">{{ field.pr_project  }}</td>
+                        <td style="width: 2%">{{ field.pr_id }} </td>
+                        <td>{{ field.nb_comments }} </td>
+                        <td>{{ field.nb_added_lines_code }}</td>
+                        <td>{{ field.nb_deleted_lines_code }}</td>
+                        <td>{{ field.nb_commits }}</td>
+                        <td>{{ field.nb_changed_fies }}</td>
+                        <td>{{ field.time_evaluation }}</td>
+                        <td>{{ field.Closed_status }}</td>
+                        <td>{{ field.reputation }}</td>
+                        <td>{{ field.Label }}</td>
+                        <td style="width: 2%"><a href="/resultOfPredicting?id={{field.pr_id}}&project={{ field.pr_project }}&class_label={{ field.Label }}">Predict</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <center>
+        <div class="pagination" align="center">
+            <span class="step-links">
+            {% if pullrequests.has_previous %}
+                <a  href="?page=1">&laquo; first</a>
+                <a  href="?page={{ pullrequests.previous_page_number }}">Previous</a>
+            {% endif %}
+            <span class="current">
+                Page {{ pullrequests.number }} of {{ pullrequests.paginator.num_pages }}.
+            </span>
+
+            {% if pullrequests.has_next %}
+                <a href="?page={{ pullrequests.next_page_number }}">Next</a>
+                <a  href="?page={{ pullrequests.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+            </span>
+        </div>
+    </center>
+</form>
+
+
+{#<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>#}
+<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+
+<script type="text/javascript">
+    function myFunction() {
+        var input, filter, table, tr, td, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        searchTable= document.getElementById("searchTable");
+        table = document.getElementById("table");
+        searchTable.style.display="";
+        table.style.display="none";
+        tr = searchTable.getElementsByTagName("tr");
+        for (i = 0; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[0];
+            if (td) {
+            txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                } else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+function changeSelect() {
+        searchContent=$("#projects_list").find("option:selected").text();
+         if(searchContent=="(All)"){
+             table.style.display="";
+             searchTable.style.display="none";
+        }else {
+            filter = searchContent.toUpperCase().trim();
+            searchTable= document.getElementById("searchTable");
+            table = document.getElementById("table");
+            searchTable.style.display="";
+            table.style.display="none";
+            tr = searchTable.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0];
+                if (td) {
+                txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().trim().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                     } else {
+                        tr[i].style.display = "none";
+          }
+        }
+      }
+        }
+
+
+  }
+
+</script>
+
+    {#function tab1_To_tab2()#}
+    {#    {#}
+    {#         var table1 = document.getElementById("table1"),#}
+    {#             table2 = document.getElementById("table2"),#}
+    {#             checkboxes = document.getElementsByName("check-tab1");#}
+    {#             console.log("Val1 = " + checkboxes.length);#}
+    {#             for(var i = 0; i < checkboxes.length; i++)#}
+    {#                 if(checkboxes[i].checked)#}
+    {#                    {#}
+    {#                    // Create a new row and cells#}
+    {#                    var newRow = table2.insertRow(table2.length),#}
+    {#                    cell1 = newRow.insertCell(0),#}
+    {#                    cell2 = newRow.insertCell(1),#}
+    {#                    cell3 = newRow.insertCell(2),#}
+    {#                    cell4 = newRow.insertCell(3);#}
+    {#                    cell5 = newRow.insertCell(4);#}
+    {#                    cell6 = newRow.insertCell(5);#}
+    {#                    cell7 = newRow.insertCell(6);#}
+    {#                    cell8 = newRow.insertCell(7);#}
+    {#                    cell9 = newRow.insertCell(8);#}
+    {#                    cell10 = newRow.insertCell(9);#}
+    {#                    cell11 = newRow.insertCell(10);#}
+    {#                    cell12 = newRow.insertCell(11);#}
+    {#                    cell13 = newRow.insertCell(12);#}
+    {##}
+    {#                    // add values to the cells#}
+    {#                    cell1.innerHTML = table1.rows[i+1].cells[0].innerHTML;#}
+    {#                    cell2.innerHTML = table1.rows[i+1].cells[1].innerHTML;#}
+    {#                    cell3.innerHTML = table1.rows[i+1].cells[2].innerHTML;#}
+    {#                    cell4.innerHTML = table1.rows[i+1].cells[3].innerHTML;#}
+    {#                    cell5.innerHTML = table1.rows[i+1].cells[4].innerHTML;#}
+    {#                    cell6.innerHTML = table1.rows[i+1].cells[5].innerHTML;#}
+    {#                    cell7.innerHTML = table1.rows[i+1].cells[6].innerHTML;#}
+    {#                    cell8.innerHTML = table1.rows[i+1].cells[7].innerHTML;#}
+    {#                    cell9.innerHTML = table1.rows[i+1].cells[8].innerHTML;#}
+    {#                    cell10.innerHTML = table1.rows[i+1].cells[9].innerHTML;#}
+    {#                    cell11.innerHTML = table1.rows[i+1].cells[10].innerHTML;#}
+    {#                    cell12.innerHTML = table1.rows[i+1].cells[11].innerHTML;#}
+    {#                    cell13.innerHTML = "<input type='checkbox' name='check-tab2'>";#}
+    {##}
+    {#                    // remove the transfered rows from the first table [table1]#}
+    {#                    var index = table1.rows[i+1].rowIndex;#}
+    {#                         table1.deleteRow(index);#}
+    {#                         // we have deleted some rows so the checkboxes.length have changed#}
+    {#                         // so we have to decrement the value of i#}
+    {#                        i--;#}
+    {#                           console.log(checkboxes.length);#}
+    {##}
+    {#                        }#}
+    {#        }#}
+    {##}
+    {#    function tab2_To_tab1()#}
+    {#    {#}
+    {#        var table1 = document.getElementById("table1"),#}
+    {#            table2 = document.getElementById("table2"),#}
+    {#            checkboxes = document.getElementsByName("check-tab2");#}
+    {#            console.log("Val1 = " + checkboxes.length);#}
+    {#            for(var i = 0; i < checkboxes.length; i++)#}
+    {#                if(checkboxes[i].checked)#}
+    {#                {#}
+    {#                // create new row and cells#}
+    {#                    var newRow = table1.insertRow(table1.length),#}
+    {#                        cell1 = newRow.insertCell(0),#}
+    {#                        cell2 = newRow.insertCell(1),#}
+    {#                        cell3 = newRow.insertCell(2),#}
+    {#                        cell4 = newRow.insertCell(3);#}
+    {#                        cell5 = newRow.insertCell(4);#}
+    {#                        cell6 = newRow.insertCell(5);#}
+    {#                        cell7 = newRow.insertCell(6);#}
+    {#                        cell8 = newRow.insertCell(7);#}
+    {#                        cell9 = newRow.insertCell(8);#}
+    {#                        cell10 = newRow.insertCell(9);#}
+    {#                        cell11 = newRow.insertCell(10);#}
+    {#                        cell12 = newRow.insertCell(11);#}
+    {#                        cell13 = newRow.insertCell(12);#}
+    {##}
+    {#                        // add values to the cells#}
+    {#                        cell1.innerHTML = table2.rows[i+1].cells[0].innerHTML;#}
+    {#                        cell2.innerHTML = table2.rows[i+1].cells[1].innerHTML;#}
+    {#                        cell3.innerHTML = table2.rows[i+1].cells[2].innerHTML;#}
+    {#                        cell4.innerHTML = table2.rows[i+1].cells[3].innerHTML;#}
+    {#                        cell5.innerHTML = table2.rows[i+1].cells[4].innerHTML;#}
+    {#                        cell6.innerHTML = table2.rows[i+1].cells[5].innerHTML;#}
+    {#                        cell7.innerHTML = table2.rows[i+1].cells[6].innerHTML;#}
+    {#                        cell8.innerHTML = table2.rows[i+1].cells[7].innerHTML;#}
+    {#                        cell9.innerHTML = table2.rows[i+1].cells[8].innerHTML;#}
+    {#                        cell10.innerHTML = table2.rows[i+1].cells[9].innerHTML;#}
+    {#                        cell11.innerHTML = table2.rows[i+1].cells[10].innerHTML;#}
+    {#                        cell12.innerHTML = table2.rows[i+1].cells[11].innerHTML;#}
+    {#                        cell13.innerHTML = "<input type='checkbox' name='check-tab1'>";#}
+    {##}
+    {#                        // remove the transfered rows from the second table [table2]#}
+    {#                        var index = table2.rows[i+1].rowIndex;#}
+    {#                            table2.deleteRow(index);#}
+    {#                            // we have deleted some rows so the checkboxes.length have changed#}
+    {#                            // so we have to decrement the value of i#}
+    {#                            i--;#}
+    {#                           console.log(checkboxes.length);#}
+    {#                }#}
+    {#    }#}
+
+
+{#function downloadCSV(csv, filename) {#}
+{#    var csvFile;#}
+{#    var downloadLink;#}
+{##}
+{#    // CSV file#}
+{#    csvFile = new Blob([csv], {type: "text/csv"});#}
+{##}
+{#    // Download link#}
+{#    downloadLink = document.createElement("a");#}
+{##}
+{#    // File name#}
+{#    downloadLink.download = filename;#}
+{##}
+{#    // Create a link to the file#}
+{#    downloadLink.href = window.URL.createObjectURL(csvFile);#}
+{##}
+{#    // Hide download link#}
+{#    downloadLink.style.display = "none";#}
+{##}
+{#    // Add the link to DOM#}
+{#    document.body.appendChild(downloadLink);#}
+{##}
+{#    // Click download link#}
+{#    downloadLink.click();#}
+{#}#}
+{##}
+{#function exportTableToCSV(filename) {#}
+{#    var csv = [];#}
+{#    var rows = document.querySelectorAll("#table2 tr");#}
+{##}
+{#    for (var i = 0; i < rows.length; i++) {#}
+{#        var row = [], cols = rows[i].querySelectorAll("td, th");#}
+{##}
+{#        for (var j = 0; j < cols.length; j++)#}
+{#            row.push(cols[j].innerText);#}
+{##}
+{#        csv.push(row.join(","));#}
+{#    }#}
+{##}
+{#    // Download CSV file#}
+{#    downloadCSV(csv.join("\n"), filename);#}
+{#}#}
+
+{#$(document).ready(function () {#}
+{##}
+{#    function addRemoveClass(theRows) {#}
+{##}
+{#    }#}
+    {#console.log('Hello');#}
+    {#$('#projects_list').change(function () {#}
+    {##}
+    {#    var project=$('#projects_list:selected').text();#}
+{#        var records=$('table#table1 tr:not(:first-child)');#}
+{#        addRemoveClass(records)#}
+    {#    //show all rows first#}
+    {#    records.show();#}
+    {#    if (project=='(All)') return;#}
+    {#    //Filter the rows that should be hidden#}
+    {#    records.filter(function(index, item) {#}
+    {#        return $(item).find('td:eq(0)').text().indexOf(project)==-1;#}
+    {#    }).hide();#}
+{##}
+{#    $('#projects_list').on("change", function () {#}
+{#        var project=$(this).value;#}
+{#        if(project!="(All)"){#}
+{#            records.filter("[project="+project+"]").show();#}
+{#            records.not("[project="+project+"]").hide();#}
+{#            var visibleProjects=records.filter("[project="+project+"]");#}
+{#            addRemoveClass(visibleProjects);#}
+{#        }else {#}
+{#        records.show();#}
+{#        addRemoveClass(records);#}
+{#    }#}
+{##}
+{##}
+{#    })#}
+{#})#}
+{##}
+{#</script>#}
+
+{% endblock content %}
+
+{% block footer %}
+    <footer class="page-footer font-small">
+                 <!-- Copyright -->
+
+                <div class="footer-copyright text-center">
+                    Copyright &copy; 2019 M. Abdillah Design
+                </div>
+            </footer>
+{% endblock footer %}

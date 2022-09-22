@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+ <form action="" method="post">
+<b align="center"><h3 align="center">Bootstrap classification report and feature importances </h3></b>
+<table cellpadding="15" cellspacing="40" align="center">
+    <thead class="table-primary">
+        <tr>
+            <th>Accuracy</th>
+            <th>Precision</th>
+            <th>Recall</th>
+            <th>F1-measure</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td> {{classification_report.accuracy }}</td>
+            <td> {{ classification_report.pricision }}</td>
+            <td> {{ classification_report.recall }}</td>
+            <td> {{ classification_report.f1_score }}</td>
+        </tr>
+    </tbody>
+</table>
+</form>
+<hr />
+<b><h3 align="center">Feature importance for predicting reopened pull requests</h3></b>
+<center><img src="{% static 'media/bootstrap_feature.png' %}" width="600" height="350" alt="Feautre importances"></center>
+{% endblock content %}

@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% block content %}
+{% csrf_token %}
+{% autoescape off %}
+<form action="" method="post">
+<br />
+    <p ><h3 align="center">Basic information of projects.</h3></p>
+<table id="table" class="table table-sm table-bordered" style="width: 60%" align="center">
+    <thead>
+        <tr>
+            <th scope="col">Project owner</th>
+            <th scope="col">Repository</th>
+            <th scope="col">Language</th>
+            <th scope="col">#Pull_requests </th>
+            <th scope="col">#Reopened_PR </th>
+            <th scope="col"># Stars</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td> rails</td>
+            <td> rails</td>
+            <td> Ruby</td>
+            <td> 19,190</td>
+            <td width="100"> 467/2.43%</td>
+            <td> 36,253</td>
+        </tr>
+        <tr>
+            <td> cocos2d </td>
+            <td> cocos2d-x </td>
+            <td> C++ </td>
+            <td> 14,134 </td>
+            <td width="100">  113/0.80% </td>
+            <td> 10,514</td>
+        </tr>
+
+        <tr>
+            <td> symfony </td>
+            <td> symfony </td>
+            <td> PHP </td>
+            <td> 14,569 </td>
+            <td width="100">  220/1.37% </td>
+            <td> 14,800 </td>
+        </tr>
+        <tr>
+            <td> caskroom </td>
+            <td> homebrew-cask </td>
+            <td> Ruby </td>
+            <td> 31,980 </td>
+            <td width="100">  331/1.04% </td>
+            <td> 11,229 </td>
+        </tr>
+        <tr>
+            <td> zendframework </td>
+            <td> zendframework </td>
+            <td> PHP </td>
+            <td> 5,631 </td>
+            <td width="100">  213/3.78% </td>
+            <td> 5,522 </td>
+        </tr>
+        <tr>
+            <td> angular </td>
+            <td> angular.js </td>
+            <td> JavaScript </td>
+            <td> 7,504 </td>
+            <td width="100">  223/2.97% </td>
+            <td> 56,359 </td>
+        </tr>
+        <tr>
+            <td> twbs </td>
+            <td> bootstrap </td>
+            <td> JavaScript </td>
+            <td> 7,614 </td>
+            <td width="100">  136/1.79% </td>
+            <td> 112,425 </td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<br>
+
+<br>
+
+</form>
+     {% endautoescape %}
+{% endblock content %}
+<div class="footer">
+{% block footer %}
+{% endblock footer %}
+</div>

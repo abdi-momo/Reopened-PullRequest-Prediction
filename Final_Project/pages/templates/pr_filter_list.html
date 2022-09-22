@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <table  id="table1" class="table table-sm table-bordered table-striped" >
+        <thead>
+            <tr class="table-header">
+    {#            <th>No</th>#}
+                <th>Project</th>
+                <th>PR_ID </th>
+                <th>Comments </th>
+                <th> LC_added </th>
+                <th> LC_deleted </th>
+                <th> Commits </th>
+                <th> Changed_fies </th>
+                <th> Evaluation_time </th>
+                <th> First_status </th>
+                <th> Reputation </th>
+    {#            <th data-field="label" data-filter-control="select" data-sortable="true"> Label </th>#}
+                <th> Predict </th>
+            </tr>
+        </thead>
+            <tbody>
+            {% for field in pr_filter_list %}
+                <tr >
+        {#            <td>{{ field.pk  }}</td>#}
+                    <td>{{ field.pr_project  }}</td>
+                    <td>{{ field.pr_id }} </td>
+                    <td>{{ field.nb_comments }} </td>
+                    <td>{{ field.nb_added_lines_code }}</td>
+                    <td>{{ field.nb_deleted_lines_code }}</td>
+                    <td>{{ field.nb_commits }}</td>
+                    <td>{{ field.nb_changed_fies }}</td>
+                    <td>{{ field.time_evaluation }}</td>
+                    <td>{{ field.Closed_status }}</td>
+                    <td>{{ field.reputation }}</td>
+{#                    <td>{{ field.Label }}</td>#}
+        {#            <td><input type="checkbox" id="pk" name="check-tab1" value={{checkbox}} /></td>#}
+                    <td><a href="/pr_filter_list?project={{ field.pr_project }}">Predict</a></td>
+                </tr>
+            </tbody>
+    {% endfor %}
+    </table>
+</body>
+</html>

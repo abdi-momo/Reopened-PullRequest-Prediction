@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block content %}
+{% csrf_token %}
+<style>
+    inline_fields input{
+        display: inline-block;
+    }
+</style>
+
+    <form action="{% url 'upload_file' %}" method="post" enctype="multipart/form-data" onsubmit="return checkblank()">
+        {% csrf_token %}
+        <input type="file" id="csv_file" name="csv_file" class="custom-buttons" id="uploadFile">
+        <input type="submit" class="btn btn-primary custom-buttons"  value="Predict">
+
+    <div class="dropdown">
+        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" name="test_size">
+        Testing Set size</button>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="#">0.2</a>
+          <a class="dropdown-item" href="#">0.3</a>
+          <a class="dropdown-item" href="#">0.4</a>
+        </div>
+    </div>
+        <p align="center"><h2>Classification report</h2></p>
+
+        <table class="table table-bordered">
+            <tr>
+                <th>Accuracy</th>
+                <th>Precision</th>
+                <th>Recall</th>
+                <th>F1-measure</th>
+            </tr>
+            <td>{{ classification_report.accuracy }}</td>
+            <td>{{ classification_report.pricision }} </td>
+            <td>{{ classification_report.recall }}</td>
+            <td>{{ classification_report.f1_score }}</td>
+        </table>
+
+{#                <p>{{ importance_feature.importances_feautre }}</p>#}
+{#        <p>{{ importance_feature}}</p>#}
+
+        <br />
+      </form>
+        <p>
+    <canvas id="myChart" width="550" height="170"></canvas>
+
+<script>
+function checkblank() {
+    if (document.getElementById('csv_file').value==""){
+        alert('Please select a csv file');
+        return false
+    }
+}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+
+ <script>
+
+var ctx = document.getElementById("myChart");
+var sourceList = {{ importance_feature.importances_feautre|safe }};
+var features_col = {{ features|safe }};
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        {#labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange","1","2"],#}
+        labels: features_col,
+        datasets: [{
+            label: '# of feature importance',
+            {#data: [12, 19, 3, 5, 2, 3],#}
+            data: sourceList,
+            {#data:{{ importance_feature}},#}
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+myChart.resize();
+ </script>
+
+{% endblock content %}

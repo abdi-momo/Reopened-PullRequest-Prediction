@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block content %}
+{% csrf_token %}
+{% autoescape off %}
+<form action="" method="post">
+<br />
+    <p><h4 align="center">Number of reopened pull requests with/without changed files.</h4></p>
+<table id="table" class="table table-sm table-bordered" align="center" style="width: 60%">
+    <thead>
+        <tr>
+            <th>Projects</th>
+            <th>#/%Reop_PR_without_changed_files</th>
+            <th>#/%Reop_PR_with_changed_les</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td> rails</td>
+            <td>77 / 16.49%</td>
+            <td align="centre"> 390 / 83.51%</td>
+        </tr>
+        <tr>
+            <td> cocos2d-x </td>
+            <td> 32 / 28.32% </td>
+            <td> 81 / 71.68%% </td>
+        </tr>
+
+        <tr>
+            <td> symfony </td>
+            <td> 67 / 30.45% </td>
+            <td> 153 / 69.55% </td>
+        </tr>
+        <tr>
+            <td> homebrew-cask </td>
+            <td> 116 / 35.05% </td>
+            <td> 215 / 64.95% </td>
+        </tr>
+        <tr>
+            <td> zendframework </td>
+            <td> 68 / 31.92% </td>
+            <td> 145 / 68.08% </td>
+        </tr>
+        <tr>
+            <td> angular.js </td>
+            <td> 52 / 23.32% </td>
+            <td> 171 / 76.68% </td>
+        </tr>
+        <tr>
+            <td> bootstrap </td>
+            <td> 63 / 46.32% </td>
+            <td> 73 / 53.68% </td>
+        </tr>
+    </tbody>
+</table>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+</form>
+     {% endautoescape %}
+{% endblock content %}
+<div class="footer">
+{% block footer %}
+{% endblock footer %}
+</div>

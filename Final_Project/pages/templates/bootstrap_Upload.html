@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+{% if messages %}
+    {% for message in messages  %}
+        <div>
+            <strong>{{ message|safe }}</strong>
+        </div>
+    {% endfor %}
+    {% else %}
+    <br><br>
+    {{ order }}
+
+    <div class="custom-file">
+        <form method="post" enctype="multipart/form-data" onsubmit="return checkblank()">
+        {% csrf_token %}
+        <label class="custom-file-label" for="customFile">Upload a file</label>
+        <input type="file" id="file" name="file" class="custom-file-input" id="customFile">
+        <p align="center">Only accept CSV files</p>
+        <button type="submit" class="btn btn-secondary btn-lg btn-block">Upload</button>
+        </form>
+    </div>
+
+{% endif %}
+
+
+ <script>
+function checkblank() {
+    if (document.getElementById('file').value==""){
+        alert('Please select a csv file');
+        return false
+    }
+
+}
+</script>
+
+{% endblock content %}

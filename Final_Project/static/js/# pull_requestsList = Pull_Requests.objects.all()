@@ -1,0 +1,150 @@
+# pull_requestsList = Pull_Requests.objects.all()
+	# prID = request.GET.get('id')
+	# project =request.GET.get('project')
+	# label=request.GET.get('label')
+	# for items in pull_requestsList:
+	# 	data=[items]
+	# 	if data[0]==project:
+	# 		print(data['pr_project'])
+	# postitiveItem,negativeItem=0,0
+	# project_name=pull_requestsList.filter(Q(pr_project=project))
+
+	# if 'rails' in pull_requestsList.filter(Q(pr_project=project)):
+	# if pull_requestsList.filter(Q(pr_project=project)):
+	# 	print(label)
+	# 	# for label in Pull_Requests.objects.filter(Label=label):
+	# 	if Pull_Requests.objects.filter(Label=label)=='Non-Reopened':
+	# 		print(label)
+	# 		negativeItem+=1
+	# 	elif Pull_Requests.objects.filter(Label=label)=='Reopened':
+	# 		postitiveItem+=1
+	# 	else:
+	# 		pass
+	# 	print(postitiveItem)
+	# 	print(negativeItem)
+	# if pull_requestsList.filter(Q(pr_id=prID)):
+	#
+	# 	print(project)
+	# 	print(prID)
+	# 	print(label)
+		# print(pull_requestsList.filter(Q(pr_id=prID)).values('nb_comments', 'nb_added_lines_code'))
+		# features_col=pull_requestsList.filter(Q(pr_id=prID)).values('nb_comments', 'nb_added_lines_code','nb_deleted_lines_code','nb_commits',
+		# 															'nb_changed_fies','time_evaluation','Closed_status','reputation')
+		# class_label=pull_requestsList.filter(Q(pr_id=prID)).values('Label')
+		# print('-------------')
+        #
+		# print(class_label)
+
+	# X=[]
+	# y=[]
+	# for index in range(len(features_col)):
+	# 	for key in features_col[index]:
+	# 		print(features_col[index][key])
+	# 		X.append(features_col[index][key])
+    #
+	# for index in range(len(class_label)):
+	# 	for key in class_label[index]:
+	# 		print(class_label[index][key])
+	# 		y.append(class_label[index][key])
+	# print(y)
+    #
+	# if X[6]=='Rejected':
+	# 	#falsePositive+=1
+	# 	X[6]=0
+	# elif X[6]=='Accepted':
+	# 	X[6]=1
+	# else:
+	# 	pass
+	# print(X)
+    #
+    #
+	# if 'Non-Reopened' in y:
+	# 	y[y.index('Non-Reopened')]=0
+	# 	y.append(1)
+	# elif 'Reopened' in y:
+	# 	y[y.index('Reopened')] = 1
+	# 	y.append(0)
+	# else:
+	# 	pass
+	# print(y)
+
+	# new_data = [X, y]
+	# random_state = 0.2
+	# test_size = request.POST.get('test_size')
+	# X_train, X_test, y_train, y_test = train_test_split(X, y, random_state=random_state, test_size=test_size)
+	# clf = tree.DecisionTreeClassifier()
+	# clf = clf.fit(X_train, y_train)
+	# y_pred = clf.predict(X_test)
+    #
+	# try:
+	# 	Accuracy="{0:.2f}%".format(accuracy_score(y_test, y_pred) * 100)
+	# 	Precision="{0:.2f}%".format(metrics.precision_score(y_test, y_pred) * 100)
+	# 	Recall="{0:.2f}%".format(metrics.recall_score(y_test, y_pred) * 100)
+	# 	F1_meseaure="{0:.2f}%".format(2*metrics.precision_score(y_test,y_pred)*metrics.recall_score(y_test,y_pred)/(metrics.precision_score(y_test,y_pred)+metrics.recall_score(y_test,y_pred))*100)
+	# 	# F1_meseaure=("{0:.2f}%".format(2*Precision*Recall)/(Precision+Recall))*100
+	# except ZeroDivisionError:
+	# 	print("Error: dividing by zero")
+	# 	F1_meseaure='nan%'
+    #
+	# print("Accuracy: {0:.2f}%".format(accuracy_score(y_test, y_pred) * 100))
+	# print("Precision: {0:.2f}%".format(metrics.precision_score(y_test, y_pred) * 100))
+	# print("Recall: {0:.2f}%".format(metrics.recall_score(y_test, y_pred) * 100))
+	# print("F1-measure: ", F1_meseaure)
+	# importances_feautres = pd.DataFrame({'features': features_col, 'importance': np.round(clf.feature_importances_, 3)})
+	# importances_feautres = importances_feautres.sort_values('importance', ascending=False).set_index('features')
+    #
+	# print('-----')
+	# print(importances_feautres.shape)
+	# importances_feautres = [ls[0] for ls in importances_feautres.values.tolist()]
+	# print('-----')
+    #
+	# classification_report = {'accuracy': Accuracy, 'pricision': Precision, 'recall': Recall, 'f1_score': F1_meseaure}
+    #
+	# importance_features = {'importances_feautre': importances_feautres}
+	# # print('-----', type(importance_features))
+    #
+	# important_features_plots = {'barh': plt.barh(features_col, np.round(clf.feature_importances_, 3)),
+	# 							'label': plt.xlabel('Relative Importance'),
+	# 							'title': plt.title('Variable Importance')
+	# 							}
+    #
+	# data = {
+	# 	'new_data': new_data,
+	# 	'classification_report': classification_report,
+	# 	'importance_feature': importance_features,
+	# 	'important_features_plots': important_features_plots,
+	# 	'features': features_col,
+	# }
+
+
+	# print(request.method)
+	# print(request.GET.__len__())
+	# project=request.GET.get('project')
+	# prId=request.GET.get('id')
+
+	# with open('C:/Users/ABDILLAH/Desktop/symfonyDistributionDataTest.csv', 'r') as file:
+	# 	csv_reader=list(csv.DictReader(file))
+	# 	# print(csv_reader)
+	# 	label_list = []
+	# 	for line in csv_reader:
+    #
+	# 		# print(line['pr_id'])
+	# 		PR = {'prID': line['pr_id'], 'comments': line['Num_Comments_before_Closed'],
+	# 		  'lc_added': line['Num_lines_added'], 'lc_deleted': line['Num_lines_deleted'],
+	# 		  'commits': line['Num_commits_before_Closed'],
+	# 		  'changed_files': line['Changed_file'], 'evaluation_time': line['Evaluation_time'],
+	# 		  'first_status': line['First_Status'], 'reputation': line['Reputation'], 'label': line['classes']}
+    #
+	# 		for column in PR['label']:
+	# 			label_list.append(column)
+    #
+	# 	if 1 in label_list:
+	# 		print(label_list.count(1))
+    #
+	# 		# PR = {'prID': line[0], 'comments': line[5],'lc_added': line['7'], 'lc_deleted': line[8],
+	# 		# 		  'commits': line[6],
+	# 		# 		  'changed_files': line[3], 'evaluation_time': line[4],
+	# 		# 		  'first_status': line[1], 'reputation': line[2], 'label': line[9]}
+    #
+    #
+
