@@ -7,3 +7,4 @@ Thus, I designed a prototype system that consists of predicting any given pull r
 Furthermore, in this system, we are able to make a prediction on each project we used during our experimentation and get the same prediction results as in 
 the Decision Tree Predictor. 
 In the end, in the application, we can get all the results of the reopening pull requests analysis.
+To run this project, if you are familiar with the Django Framework, go to the PullRequest-Reopened-Prediction folder, then open the Final_Project and follow the Django process to run the application prototype. 
